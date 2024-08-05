@@ -16,6 +16,16 @@ public class User {
     private String email;
     @Column
     private String password;
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
     public void setName(String name) {
         this.name = name;
     }
