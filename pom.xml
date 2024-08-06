@@ -71,7 +71,6 @@
 			<version>${SWAGGER.VERSION}</version>
 		</dependency>
 	</dependencies>
-
 	<build>
 		<plugins>
 			<plugin>

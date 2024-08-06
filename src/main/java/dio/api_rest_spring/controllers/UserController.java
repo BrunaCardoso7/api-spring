@@ -3,14 +3,12 @@ package dio.api_rest_spring.controllers;
 import dio.api_rest_spring.models.User;
 import dio.api_rest_spring.repositorys.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin
 @RestController
 public class UserController {
 
@@ -20,6 +18,11 @@ public class UserController {
     @GetMapping("/users")
     public List<User> getUser () {
         return repository.findAll();
+    }
+
+    @PostMapping("/users")
+    public User createUser (@RequestBody User user){
+        return  repository.save(user);
     }
 
     @GetMapping("/users/{id}")
