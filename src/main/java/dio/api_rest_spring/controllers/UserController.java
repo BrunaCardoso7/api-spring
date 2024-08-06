@@ -24,6 +24,21 @@ public class UserController {
     public User createUser (@RequestBody User user){
         return  repository.save(user);
     }
+    @PatchMapping("/users/{id}")
+    public User updateUser (@PathVariable("id") Integer id, @RequestBody User user){
+        Optional<User> foundUserOptional = repository.findById(id);
+
+        if (foundUserOptional.isPresent()) {
+            User foundUser = foundUserOptional.get();
+
+            foundUser.setName(user.getName());
+            foundUser.setEmail(user.getEmail());
+            foundUser.setPassword(user.getPassword());
+
+            return repository.save(foundUser);
+        }
+        return user;
+    }
 
     @GetMapping("/users/{id}")
     public Optional<User> getUserByUsername (@PathVariable("id")Integer id) {
